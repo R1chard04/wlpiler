@@ -1,0 +1,8 @@
+begin:
+.word begin
+
+middle:
+.word middle
+
+.word end
+end:

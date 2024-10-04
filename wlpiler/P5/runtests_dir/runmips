@@ -1,0 +1,15 @@
+#!/bin/bash
+# runmips() runs the MIPS program corresponding to the given program name
+# and file marker, returning the exit code and producing output files.
+# Also checks if the input file is valid.
+function runmips() {
+  local MIPS="$1"
+  local PROGRAM="$2"
+  local MARKER="$3"
+  local INPUT="${PROGRAM%.*}.in"
+  "$MIPS" "$PROGRAM.$MARKER.mips" < "$INPUT" > "$PROGRAM.$MARKER.out" 2> "$PROGRAM.$MARKER.err"
+  return $?
+}
+
+runmips "$1" "$2" "$3"
+exit $?

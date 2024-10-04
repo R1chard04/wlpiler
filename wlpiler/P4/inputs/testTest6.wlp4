@@ -1,0 +1,12 @@
+int wain(int a, int b) {
+    int* blacknoir = NULL;
+    int atrain = 4;
+    int translucent = 5;
+
+    if(blacknoir > atrain) {
+        translucent = 3;
+    }
+    else {}
+
+    return 3;
+}

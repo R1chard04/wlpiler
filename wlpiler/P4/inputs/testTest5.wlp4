@@ -1,0 +1,12 @@
+int wain(int a, int b) {
+    int* homelander = NULL;
+    int maeve = 4;
+    int deep = 5;
+
+    if(homelander < maeve) {
+        deep = 3;
+    }
+    else {}
+
+    return 3;
+}

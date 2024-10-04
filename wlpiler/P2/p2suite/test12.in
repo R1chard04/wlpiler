@@ -1,0 +1,20 @@
+lis $4
+.word 4
+lis $1
+.word courseArray
+lis $2
+.word endArray
+add $3, $0, $0
+loop: beq $1, $2, end ; go to end of loop if $1 is at endArray
+lw $6, 0($1) ; load A[i] into $6
+add $1, $1, $4 ; $1 = address of A[i+1]
+bne $6, $7, loop ; continue loop if $7 != A[i]
+lis $3
+.word 1 ; return 1 in $3 if $7 == A[i]
+end: jr $31
+courseArray:
+.word 135
+.word 136
+.word 245
+.word 246
+endArray:

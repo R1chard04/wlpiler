@@ -1,0 +1,145 @@
+start BOF procedures EOF
+BOF BOF
+procedures procedure procedures
+procedure INT ID LPAREN params RPAREN LBRACE dcls statements RETURN expr SEMI RBRACE
+INT int
+ID abs
+LPAREN (
+params paramlist
+paramlist dcl
+dcl type ID
+type INT
+INT int
+ID n : int
+RPAREN )
+LBRACE {
+dcls .EMPTY
+statements statements statement
+statements .EMPTY
+statement PRINTLN LPAREN expr RPAREN SEMI
+PRINTLN println
+LPAREN (
+expr term : int
+term factor : int
+factor ID : int
+ID n : int
+RPAREN )
+SEMI ;
+RETURN return
+expr term : int
+term factor : int
+factor ID : int
+ID n : int
+SEMI ;
+RBRACE }
+procedures procedure procedures
+procedure INT ID LPAREN params RPAREN LBRACE dcls statements RETURN expr SEMI RBRACE
+INT int
+ID tieBreak
+LPAREN (
+params paramlist
+paramlist dcl COMMA paramlist
+dcl type ID
+type INT
+INT int
+ID a : int
+COMMA ,
+paramlist dcl
+dcl type ID
+type INT
+INT int
+ID b : int
+RPAREN )
+LBRACE {
+dcls dcls dcl BECOMES NUM SEMI
+dcls .EMPTY
+dcl type ID
+type INT
+INT int
+ID absA : int
+BECOMES =
+NUM 0 : int
+SEMI ;
+statements statements statement
+statements .EMPTY
+statement lvalue BECOMES expr SEMI
+lvalue ID : int
+ID absA : int
+BECOMES =
+expr term : int
+term factor : int
+factor ID LPAREN arglist RPAREN : int
+ID abs
+LPAREN (
+arglist expr
+expr term : int
+term factor : int
+factor ID : int
+ID a : int
+RPAREN )
+SEMI ;
+RETURN return
+expr term : int
+term factor : int
+factor ID : int
+ID absA : int
+SEMI ;
+RBRACE }
+procedures main
+main INT WAIN LPAREN dcl COMMA dcl RPAREN LBRACE dcls statements RETURN expr SEMI RBRACE
+INT int
+WAIN wain
+LPAREN (
+dcl type ID
+type INT STAR
+INT int
+STAR *
+ID array : int*
+COMMA ,
+dcl type ID
+type INT
+INT int
+ID size : int
+RPAREN )
+LBRACE {
+dcls dcls dcl BECOMES NUM SEMI
+dcls .EMPTY
+dcl type ID
+type INT
+INT int
+ID resVal : int
+BECOMES =
+NUM 10 : int
+SEMI ;
+statements statements statement
+statements .EMPTY
+statement lvalue BECOMES expr SEMI
+lvalue ID : int
+ID resVal : int
+BECOMES =
+expr term : int
+term factor : int
+factor ID LPAREN arglist RPAREN : int
+ID tieBreak
+LPAREN (
+arglist expr COMMA arglist
+expr term : int
+term factor : int
+factor NUM : int
+NUM 3 : int
+COMMA ,
+arglist expr
+expr term : int
+term factor : int
+factor NUM : int
+NUM 5 : int
+RPAREN )
+SEMI ;
+RETURN return
+expr term : int
+term factor : int
+factor ID : int
+ID resVal : int
+SEMI ;
+RBRACE }
+EOF EOF

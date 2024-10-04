@@ -1,0 +1,2 @@
+int p(int p) { return p; }
+int wain(int a, int p) { return p(a); }

@@ -1,0 +1,9 @@
+int wain(int a, int b) {
+    int* walter = NULL;
+    int* jesse = NULL;
+    int gustavo = 2;
+
+    gustavo = walter / jesse;
+
+    return 88;
+}

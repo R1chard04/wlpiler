@@ -1,0 +1,8 @@
+lis $1
+.word 241
+lis $3
+.word secretStash
+sw $1, 0($3)
+jr $31
+secretStash: .word 240
+secretStash:

@@ -1,0 +1,6 @@
+int wain(int a, int b) {
+    int* mmmpickles = NULL;
+    mmmpickles = new int[3];
+    println(mmmpickles);
+    return 1;
+}

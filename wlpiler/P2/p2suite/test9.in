@@ -1,0 +1,64 @@
+lis $20
+.word 0xffff000c  ; const int outputAddress
+lis $21
+.word 0xffff0004  ; const int inputAddress
+
+lis $8
+.word 0x30  ; const char zero  
+lis $9
+.word 0x2d  ; const char dash
+lis $10
+.word 0x0a  ; const char newLine
+
+lis $11
+.word 0  ; bool isNeg
+lis $12
+.word 0  ; int accum
+lis $13
+.word 1  ; const int oneIncr
+lis $14
+.word 10  ; const int tenBase
+
+
+readFirstByte:
+
+lw $1, 0($21)  ; cin >> $1, where $1 stores a single char
+
+bne $1, $9, handleFirstNumericalDigit  ; if ($1 != '-')
+
+add $11, $0, $13  ; isNeg = true
+lw $1, 0($21)  ; cin >> $1
+
+
+handleFirstNumericalDigit:
+
+sub $2, $1, $8  ; $2 = $1 - '0'
+add $12, $2, $0  ; $12 = $2
+
+
+handleRemainingDigits:
+
+lw $1, 0($21)  ; cin >> $1
+
+beq $1, $10, outputDecNum  ; if ($1 == '\n')
+
+multu $12, $14  ; accum *= 10
+mflo $12
+
+sub $2, $1, $8  ; $2 = $1 - '0'
+add $12, $12, $2  ; $12 += $2
+
+bne $1, $10, handleRemainingDigits  ; repeat while ($1 != '\n')
+
+
+outputDecNum:
+
+beq $11, $0, print  ; if (!isNeg)
+sub $12, $0, $12  ; accum *= -1
+
+
+print:
+sw $12, 0($20)  ; cout << accum
+
+
+jr $31

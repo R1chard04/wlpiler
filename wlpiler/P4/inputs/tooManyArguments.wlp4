@@ -1,0 +1,7 @@
+int loong(int a, int b, int c, int d, int e, int f) {
+  return 0;
+}
+
+int wain(int a, int b) { 
+  return loong(1,2,3,4,5,6,7); 
+}

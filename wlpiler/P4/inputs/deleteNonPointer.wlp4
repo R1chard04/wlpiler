@@ -1,0 +1,8 @@
+int wain(int a, int b) {
+    int so = 1;
+    int* tired = NULL;
+    tired = new int[123];
+
+    delete[] so;
+    return 23; 
+}

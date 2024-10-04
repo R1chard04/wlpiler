@@ -1,0 +1,8 @@
+int wain(int a, int b) {
+    int orangejuice = 4;
+    int* applecider = NULL;
+    applecider = new int[3];
+    orangejuice = a + b;
+
+    return applecider;
+}

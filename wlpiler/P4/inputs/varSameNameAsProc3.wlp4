@@ -1,0 +1,10 @@
+int meowwwwwwwwwwwwwwwwwwww() {
+    return 241;
+}
+
+int wain(int a, int b) {
+    int meowwwwwwwwwwwwwwwwwwww = 2;
+    int kitten = 4;
+    kitten = meowwwwwwwwwwwwwwwwwwww();
+    return 32;
+}

@@ -1,0 +1,6 @@
+int wain(int a, int b) {
+    int monkey = 2;
+    int po = 4;
+    tigress = 2;
+    return 1;
+}

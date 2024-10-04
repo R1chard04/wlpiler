@@ -1,0 +1,11 @@
+int brazil(int d) {
+    int* BRUHMOMENT = NULL;
+    BRUHMOMENT = new int[123];
+    return BRUHMOMENT;
+}
+
+int wain(int a, int b) {
+    int canada = 2;
+    canada = brazil(34);
+    return 3;
+}

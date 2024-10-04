@@ -1,0 +1,11 @@
+int goose(int c) {
+    return 69;
+}
+
+int goose(int d) {
+    return 96;
+}
+
+int wain(int a, int b) {
+    return 241;
+}

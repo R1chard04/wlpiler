@@ -1,0 +1,9 @@
+int wain(int a, int b) {
+    int ron = 100;
+    int* leslie = NULL;
+    int mark = 0;
+    leslie = new int[1];
+    mark = ron - leslie;
+
+    return mark;
+}

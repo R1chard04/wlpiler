@@ -1,0 +1,32 @@
+int wain(int a, int b) {
+  if(a == b) {
+    if(a == b) {
+      if(a == b) {
+        a = 1;
+      } else {
+        a = 2;
+      } 
+    } else {
+      if(a == b) {
+        a = 3;
+      } else {
+        a = 4;
+      } 
+    } 
+  } else {
+    if(a == b) {
+      if(a == b) {
+        a = 5;
+      } else {
+        a = 6;
+      } 
+    } else {
+      if(a == b) {
+        a = 7;
+      } else {
+        a = 8;
+      } 
+    } 
+  } 
+  return a;
+}

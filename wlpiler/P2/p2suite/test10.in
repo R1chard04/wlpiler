@@ -1,0 +1,178 @@
+print:
+
+
+; preserving register vals:
+
+sw $1, -4($30)
+sw $2, -8($30)
+sw $3, -12($30)
+sw $4, -16($30)
+sw $5, -20($30)
+sw $6, -24($30)
+sw $7, -28($30)
+sw $8, -32($30)
+sw $9, -36($30)
+sw $10, -40($30)
+sw $20, -44($30)
+
+lis $2
+.word 44
+
+sub $30, $30, $2
+
+
+; initialization:
+
+lis $2
+.word -2147483648  ; INT_MIN
+lis $4
+.word 1000000000  ; divisor (10^n)
+lis $5
+.word 1  ; bool isProcessingLeadingZero
+
+lis $8
+.word 0x30  ; '0'  
+lis $9
+.word 0x2d  ; minus char
+lis $10
+.word 0x0a  ; new line char & 10
+
+lis $20
+.word 0xffff000c  ; output address
+
+; other in-use registers:
+; $1: int num (parameter)
+; $3: bool isNeg
+; $6: int currDigit
+; $7: char toOutput
+
+
+; distinguishing between pos, neg, and edge cases
+
+beq $1, $2, outputIntMin  ; if ($1 == INT_MIN)
+beq $1, $0, outputZero  ; if ($1 == 0)
+
+slt $3, $1, $0  ; if ($1 < 0) isNeg = true; else isNeg = false
+beq $3, $0, processLeadingZeroes  ; if (!isNeg)
+
+sw $9, 0($20)  ; cout << '-'
+sub $1, $0, $1  ; $1 *= -1
+
+
+processLeadingZeroes:
+
+divu $1, $4  ; currDigit = $1 / divisor 
+mfhi $1      ; $1 %= 10
+mflo $6      
+
+bne $6, $0, outputCurrDigit  ; if ($6 != 0)
+
+divu $4, $10  ; divisor /= 10
+mflo $4
+
+beq $6, $0, processLeadingZeroes  ; repeat while ($6 == 0)
+
+
+outputCurrDigit: 
+
+add $7, $8, $6  ; $7 = '0' + currDigit
+sw $7, 0($20)  ; cout >> (char)currDigit
+
+
+outputUnsigned:
+
+divu $4, $10  ; divisor /= 10
+mflo $4
+
+beq $4, $0, end  ; if ($4 == 0)
+
+divu $1, $4  ; currDigit = $1 / divisor 
+mflo $6      ; $1 %= 10
+mfhi $1  
+
+add $7, $8, $6  ; $7 = '0' + currDigit
+sw $7, 0($20)  ; cout >> (char)currDigit
+
+bne $4, $0, outputUnsigned  ; if ($4 != 0)
+
+
+outputIntMin:
+
+lis $3
+.word 0x2d  ; '-'
+sw $3, 0($20)  ; cout << '-' 
+
+lis $3
+.word 0x32  ; '2'
+sw $3, 0($20)  ; cout << '2' 
+
+lis $3
+.word 0x31  ; '1'
+sw $3, 0($20)  ; cout << '1'
+
+lis $3
+.word 0x34  ; '4'
+sw $3, 0($20)  ; cout << '4' 
+
+lis $3
+.word 0x37  ; '7'
+sw $3, 0($20)  ; cout << '7' 
+
+lis $3
+.word 0x34  ; '4'
+sw $3, 0($20)  ; cout << '4'
+
+lis $3
+.word 0x38  ; '8'
+sw $3, 0($20)  ; cout << '8'
+
+lis $3
+.word 0x33  ; '3'
+sw $3, 0($20)  ; cout << '3'
+
+lis $3
+.word 0x36  ; '6'
+sw $3, 0($20)  ; cout << '6'
+
+lis $3
+.word 0x34  ; '4'
+sw $3, 0($20)  ; cout << '4'
+
+lis $3
+.word 0x38  ; '8'
+sw $3, 0($20)  ; cout << '8'
+
+beq $1, $2, end  ; if ($1 == INT_MIN)
+
+
+outputZero:
+
+sw $8, 0($20)  ; cout << '0'
+
+
+end:
+
+sw $10, 0($20)  ; cout << '\n'
+
+
+; reloading register vals:
+
+lis $2
+.word 44
+
+add $30, $30, $2
+
+lw $1, -4($30)
+lw $2, -8($30)
+lw $3, -12($30)
+lw $4, -16($30)
+lw $5, -20($30)
+lw $6, -24($30)
+lw $7, -28($30)
+lw $8, -32($30)
+lw $9, -36($30)
+lw $10, -40($30)
+lw $20, -44($30)
+
+
+jr $31

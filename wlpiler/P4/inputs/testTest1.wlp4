@@ -1,0 +1,12 @@
+int wain(int a, int b) {
+    int* hughie = NULL;
+    int mm = 4;
+    int frenchie = 9;
+
+    if(hughie == mm) {
+        frenchie = 3;
+    }
+    else {}
+
+    return 3;
+}

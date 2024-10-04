@@ -1,0 +1,7 @@
+int wain(int a, int b) {
+    int walle = 12;
+    int eve = 34;
+    int walle = 5;
+    walle = 1;
+    return 1934812;
+}

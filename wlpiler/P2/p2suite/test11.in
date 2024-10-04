@@ -1,0 +1,6 @@
+beq $1, $2, end
+loop: lis $5
+.word add
+add: add $2, $2, $5
+beq $0, $0, loop
+end: jr $31

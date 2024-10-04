@@ -1,0 +1,10 @@
+int wain(int a, int b) {
+    int* buzz = NULL;
+    int* woody = NULL;
+    int andy = 0;
+    buzz = new int[3];
+    woody = new int[1];
+    andy = buzz + woody;
+
+    return andy;
+}

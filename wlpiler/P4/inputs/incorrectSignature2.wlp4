@@ -1,0 +1,9 @@
+int lazeez(int* d, int* a, int m, int n) {
+    return 2;
+}
+
+int wain(int a, int b) {
+    int diarrhea = 3;
+    diarrhea = lazeez(3, 2, 3, 4);
+    return 1;
+}

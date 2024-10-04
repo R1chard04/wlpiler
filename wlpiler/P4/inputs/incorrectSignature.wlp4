@@ -1,0 +1,10 @@
+int olivessuck(int d, int a, int m, int n) {
+    return 2;
+}
+
+int wain(int a, int b) {
+    int yestheydo = 3;
+    int* boo = NULL;
+    yestheydo = olivessuck(3, 2, boo, 4);
+    return 1;
+}

@@ -1,0 +1,11 @@
+int woah(int a, int b) {
+    int joel = 123;
+    return 3;
+}
+
+int wain(int c, int f) {
+    int ellie = 4;
+    joel = 12;
+
+    return 1;
+}

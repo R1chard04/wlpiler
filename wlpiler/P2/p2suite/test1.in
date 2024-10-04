@@ -1,0 +1,55 @@
+lis $10     ; newline character
+.word 0x0A
+
+lis $12    ; eof character
+.word 0xffffffff
+
+lis $11
+.word 0x2D  ; minus character
+
+lis $20
+.word 0xffff000c ; output address
+lis $21
+.word 0xffff0004 ; input address
+
+lis $5      ; output num value
+.word 0x0
+
+lis $4
+.word 0x30 ; num 48
+
+lw $3,0($21) ; read byte 1
+
+beq $3,$11,negative
+sub $3, $3, $4
+add $5,$5,$3
+bne $3,$11,positive
+
+negative: ; loop until newline or eof is found
+lw $3, 0($21) ; read bytes
+beq $3, $10, nmain
+beq $3, $12, nmain
+sub $3, $3, $4
+mult $5, $10
+mflo $5
+add $5, $5, $3
+beq $0, $0, negative
+
+nmain:
+sub $5, $0, $5 ; twos complement
+sw $5, 0($20)
+jr $31
+
+positive:
+lw $3, 0($21) ; read bytes
+beq $3, $10, pmain
+beq $3, $12, pmain
+sub $3, $3, $4
+mult $5,$10
+mflo $5
+add $5, $5, $3
+beq $0, $0, positive
+
+pmain:
+sw $5, 0($20)
+jr $31

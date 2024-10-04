@@ -1,0 +1,98 @@
+print:
+sw $3, -4($30)
+sw $4, -8($30)
+sw $19, -12($30)
+sw $10, -16($30)
+sw $11, -20($30)
+sw $16, -24($30)
+sw $15, -28($30)
+sw $20, -32($30)
+sw $9, -36($30)
+sw $2, -40($30)
+sw $25, -44($30)
+lis $25
+.word 44
+sub $30, $30, $25
+
+lis $3
+.word 0
+
+lis $4
+.word 4
+
+lis $19
+.word 1
+
+lis $10
+.word 10
+
+lis $11
+.word 0x30
+
+lis $16
+.word 0x2D  ; minus char
+
+lis $15
+.word 0x0A  ; newline char
+
+lis $20
+.word 0xffff000c ; output address
+
+beq $1, $0, caseZero
+
+slt $9, $1, $0
+beq $9, $0, loopPos
+sw $16, 0($20)
+beq $0, $0, loopNeg
+
+loopPos:
+beq $1, $0, digitPrint
+div $1, $10
+mflo $1
+mfhi $2
+sw $2, -4($30)
+sub $30, $30, $4
+add $3, $3, $19
+beq $0, $0, loopPos
+
+loopNeg:
+beq $1, $0, digitPrint
+div $1, $10
+mflo $1
+mfhi $2
+sub $2, $0, $2 ; remainder is negative
+sw $2, -4($30)
+sub $30, $30, $4
+add $3, $3, $19
+beq $0, $0, loopNeg
+
+digitPrint:
+beq $3, $0, endPrint
+add $30, $30, $4
+lw $2, -4($30)
+add $2, $2, $11
+sw $2, 0($20)
+sub $3, $3, $19
+beq $0, $0, digitPrint
+
+endPrint:
+sw $15, 0($20)
+
+add $30, $30, $25
+lw $3, -4($30)
+lw $4, -8($30)
+lw $19, -12($30)
+lw $10, -16($30)
+lw $11, -20($30)
+lw $16, -24($30)
+lw $15, -28($30)
+lw $20, -32($30)
+lw $9, -36($30)
+lw $2, -40($30)
+lw $25, -44($30)
+
+jr $31
+
+caseZero:
+sw $11, 0($20)
+beq $0, $0, endPrint

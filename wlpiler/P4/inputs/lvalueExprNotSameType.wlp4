@@ -1,0 +1,7 @@
+int wain(int a, int b) {
+    int atreides = 34;
+    int* harkonnen = NULL;
+    harkonnen = new int[34];
+    atreides = harkonnen;
+    return 5;
+}

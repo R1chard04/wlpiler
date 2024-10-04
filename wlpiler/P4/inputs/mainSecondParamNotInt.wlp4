@@ -1,0 +1,3 @@
+int wain(int a, int* oopsiepoopsie) {
+    return 3;
+}

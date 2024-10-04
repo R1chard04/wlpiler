@@ -1,0 +1,7 @@
+int wain(int a, int b) {
+    int* porkchop = NULL;
+    int* steak = NULL;
+    porkchop = new int[steak];
+
+    return 3;
+}

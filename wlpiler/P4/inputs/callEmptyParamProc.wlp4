@@ -1,0 +1,9 @@
+int callMe(int whaaaaa) {
+    return 1;
+}
+
+int wain(int a, int b) {
+    int e = 3;
+    e = callMe();
+    return 2;
+}

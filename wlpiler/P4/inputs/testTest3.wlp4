@@ -1,0 +1,12 @@
+int wain(int a, int b) {
+    int* butcher = NULL;
+    int frenchie = 4;
+    int annie = 5;
+
+    if(butcher >= frenchie) {
+        annie = 3;
+    }
+    else {}
+
+    return 3;
+}

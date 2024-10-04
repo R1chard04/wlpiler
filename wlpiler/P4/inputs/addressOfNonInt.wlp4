@@ -1,0 +1,3 @@
+int wain(int *burgerking, int mcdonalds) {
+  return *&(burgerking);
+}
